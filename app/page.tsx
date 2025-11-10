@@ -377,7 +377,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             <ScrollAnimation>
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏠</div>
+                {/* <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏠</div> */}
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-800 sm:mb-4">Individual Users</h3>
                 <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                   Transform your home into a personal wellness sanctuary with our 
@@ -395,7 +395,7 @@ export default function HomePage() {
             
             <ScrollAnimation delay={200}>
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏥</div>
+                {/* <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏥</div> */}
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-800 sm:mb-4">Clinics & Gyms</h3>
                 <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                   Equip your professional space with reliable, high-performance 
