@@ -1,13 +1,26 @@
-// app/page.js
+// app/page.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import { Menu, X, Dumbbell, Shield, Lightbulb, Users, Home, Building, MapPin, Phone, Mail } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
-export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const sectionRefs = useRef({});
+interface ScrollAnimationProps {
+  children: React.ReactNode;
+  delay?: number;
+}
+
+interface SectionRefs {
+  [key: string]: HTMLElement | null;
+}
+
+export default function HomePage() {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [activeSection, setActiveSection] = useState<string>('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const sectionRefs = useRef<SectionRefs>({});
+
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,13 +48,13 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const setRef = (section) => (el) => {
+  const setRef = (section: string) => (el: HTMLElement | null) => {
     sectionRefs.current[section] = el;
   };
 
-  const ScrollAnimation = ({ children, delay = 0 }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
+  const ScrollAnimation = ({ children, delay = 0 }: ScrollAnimationProps) => {
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
       const observer = new IntersectionObserver(
@@ -83,6 +96,14 @@ export default function Home() {
     );
   };
 
+  const navigationItems = [
+    { id: 'home', label: 'Home', icon: Home },
+    { id: 'about', label: 'About', icon: Building },
+    { id: 'values', label: 'Values', icon: Shield },
+    { id: 'services', label: 'Services', icon: Users },
+    { id: 'contact', label: 'Contact', icon: MapPin },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-[#f0fdff] font-sans">
       {/* Navigation */}
@@ -91,20 +112,24 @@ export default function Home() {
       }`}>
         <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
           <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#00ffff] rounded-full flex items-center justify-center">
+              <Dumbbell className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900" />
+            </div>
             <span className="text-lg sm:text-xl font-bold text-gray-800">Ciwaviv</span>
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
-            {['about', 'values', 'services', 'contact'].map((section) => (
+            {navigationItems.slice(1).map((item) => (
               <a
-                key={section}
-                href={`#${section}`}
-                className={`transition-colors ${
-                  activeSection === section ? 'text-[#00ffff] font-semibold' : 'text-gray-700 hover:text-[#00ffff]'
+                key={item.id}
+                href={`#${item.id}`}
+                className={`transition-colors flex items-center space-x-1 ${
+                  activeSection === item.id ? 'text-[#00ffff] font-semibold' : 'text-gray-700 hover:text-[#00ffff]'
                 }`}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {/* <item.icon className="w-4 h-4" /> */}
+                <span>{item.label}</span>
               </a>
             ))}
           </div>
@@ -113,47 +138,94 @@ export default function Home() {
           <div className="md:hidden flex items-center space-x-4">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 hover:text-[#00ffff] transition-colors"
+              className="text-gray-700 hover:text-[#00ffff] transition-colors p-2"
             >
-              <i className={`fas ${isMobileMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+              <Menu className="w-6 h-6" />
             </button>
           </div>
 
           {/* Desktop CTA Button */}
-          <button className="hidden md:block bg-[#00ffff] text-gray-900 px-6 py-2 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold">
-            Get Started
+          <button onClick={() => router.push("https://fithub.ng")} className="hidden md:flex items-center space-x-2 bg-[#00ffff] text-gray-900 px-6 py-2 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold">
+            {/* <Phone className="w-4 h-4" /> */}
+            <span>Get Started</span>
           </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white py-4 px-4 shadow-lg">
-            <div className="flex flex-col space-y-4">
-              {['about', 'values', 'services', 'contact'].map((section) => (
-                <a
-                  key={section}
-                  href={`#${section}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`transition-colors ${
-                    activeSection === section ? 'text-[#00ffff] font-semibold' : 'text-gray-700 hover:text-[#00ffff]'
-                  }`}
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </a>
-              ))}
-              <button className="bg-[#00ffff] text-gray-900 px-6 py-3 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold mt-4">
-                Get Started
-              </button>
-            </div>
-          </div>
-        )}
       </nav>
 
+      {/* Mobile Sidebar */}
+      <div className={`
+        fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out md:hidden
+        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
+      `}>
+        {/* Backdrop */}
+        <div 
+          className="absolute "
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+        
+        {/* Sidebar */}
+        <div className="relative w-80 max-w-full h-full bg-white shadow-xl">
+          {/* Header */}
+          <div className="flex items-center justify-between p-6 border-b border-gray-200">
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-[#00ffff] rounded-full flex items-center justify-center">
+                <Dumbbell className="w-5 h-5 text-gray-900" />
+              </div>
+              <span className="text-xl font-bold text-gray-800">Ciwaviv</span>
+            </div>
+            <button 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+            >
+              <X className="w-6 h-6 text-gray-600" />
+            </button>
+          </div>
+
+          {/* Navigation Items */}
+          <div className="p-6">
+            <nav className="space-y-4">
+              {navigationItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center space-x-3 p-3 rounded-lg transition-al text-gray-800`}
+                >
+                  <item.icon className="w-5 h-5" />
+                  <span className="text-lg">{item.label}</span>
+                </a>
+              ))}
+            </nav>
+
+            {/* CTA Button */}
+            <button onClick={() => router.push("https://fithub.ng")} className="w-full mt-8 flex items-center justify-center space-x-2 bg-[#00ffff] text-gray-900 px-6 py-4 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold">
+              {/* <Phone className="w-5 h-5" /> */}
+              <span>Get Started</span>
+            </button>
+
+            {/* Contact Info */}
+            <div className="mt-8 pt-8 border-t border-gray-200">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3 text-gray-600">
+                  <Mail className="w-4 h-4" />
+                  <span className="text-sm">info@ciwaviv.com</span>
+                </div>
+                <div className="flex items-center space-x-3 text-gray-600">
+                  <Phone className="w-4 h-4" />
+                  <span className="text-sm">+234 XXX XXX XXXX</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero Section */}
       <section ref={setRef('home')} className="pt-28 pb-16 sm:pt-32 sm:pb-20 px-4 relative overflow-hidden">
-        {/* Highly Visible Grid Background */}
+        {/* Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff20_1px,transparent_1px),linear-gradient(to_bottom,#00ffff20_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent_70%)]"></div>
         
-        {/* Optional: Add a subtle animated pulse */}
+        {/* Animated Pulse */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff40_1px,transparent_1px),linear-gradient(to_bottom,#00ffff40_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent_70%)] animate-pulse-slow"></div>
         
         <div className="container mx-auto text-center relative z-10">
@@ -167,7 +239,7 @@ export default function Home() {
             clinics, and gyms across Nigeria to achieve fitness and recovery goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button className="bg-[#00ffff] text-gray-900 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#00e6e6] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
+            <button onClick={() => router.push("https://fithub.ng/shop")} className="bg-[#00ffff] text-gray-900 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#00e6e6] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
               Explore Products
             </button>
             <button className="border-2 border-[#00ffff] text-[#00ffff] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#00ffff] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
@@ -221,7 +293,7 @@ export default function Home() {
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">About Ciwaviv</h2>
                 <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
-                  Fithub Co. Ltd is a Nigerian company dedicated to promoting wellness through 
+                  Ciwaviv is a Nigerian company dedicated to promoting wellness through 
                   quality sports, physiotherapy, and health equipment. We partner with trusted brands 
                   to provide durable, affordable, and effective products.
                 </p>
@@ -238,13 +310,12 @@ export default function Home() {
             </ScrollAnimation>
             <ScrollAnimation delay={200}>
               <div className="relative">
-                <div className="flex items-center justify-center overflow-hidden relative">
+                <div className="bg-gray-100 rounded-2xl h-96 flex items-center justify-center overflow-hidden">
                   <img 
                     src="/fithub_6.jpg" 
                     alt="Ciwaviv Community - People exercising and using fitness equipment"
                     className="w-full h-full object-cover rounded-xl"
                   />
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent rounded-xl"></div> */}
                 </div>
               </div>
             </ScrollAnimation>
@@ -260,9 +331,9 @@ export default function Home() {
             <ScrollAnimation>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#00ffff] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <span className="text-2xl sm:text-3xl">🛡️</span>
+                  <Shield className="w-8 h-8 sm:w-10 sm:h-10 text-[#00ffff]" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Quality You Can Trust</h3>
+                <h3 className="text-lg text-gray-800 sm:text-xl font-bold mb-3 sm:mb-4">Quality You Can Trust</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
                   Every product meets high standards for safety and performance, ensuring 
                   reliability for all your wellness needs.
@@ -273,9 +344,9 @@ export default function Home() {
             <ScrollAnimation delay={200}>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#00ffff] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <span className="text-2xl sm:text-3xl">💡</span>
+                  <Lightbulb className="w-8 h-8 sm:w-10 sm:h-10 text-[#00ffff]" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Innovation That Inspires</h3>
+                <h3 className="text-lg sm:text-xl text-gray-800 font-bold mb-3 sm:mb-4">Innovation That Inspires</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
                   We constantly seek new ways to enhance wellness experiences through 
                   cutting-edge equipment and solutions.
@@ -286,9 +357,9 @@ export default function Home() {
             <ScrollAnimation delay={400}>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#00ffff] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <span className="text-2xl sm:text-3xl">🤝</span>
+                  <Users className="w-8 h-8 sm:w-10 sm:h-10 text-[#00ffff]" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Community & Care</h3>
+                <h3 className="text-lg sm:text-xl text-gray-800 font-bold mb-3 sm:mb-4">Community & Care</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
                   Supporting both professionals and everyday users in their health journeys 
                   with personalized care and guidance.
@@ -307,7 +378,7 @@ export default function Home() {
             <ScrollAnimation>
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
                 <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏠</div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Individual Users</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-800 sm:mb-4">Individual Users</h3>
                 <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                   Transform your home into a personal wellness sanctuary with our 
                   carefully curated equipment for fitness enthusiasts and those on 
@@ -325,7 +396,7 @@ export default function Home() {
             <ScrollAnimation delay={200}>
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
                 <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏥</div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Clinics & Gyms</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-800 sm:mb-4">Clinics & Gyms</h3>
                 <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                   Equip your professional space with reliable, high-performance 
                   equipment that meets the demands of your clients and patients.
@@ -352,12 +423,12 @@ export default function Home() {
           </ScrollAnimation>
           <ScrollAnimation delay={200}>
             <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 font-medium">
-              Join thousands of satisfied customers across Nigeria who trust FitHub 
+              Join thousands of satisfied customers across Nigeria who trust Ciwaviv 
               for their health and fitness equipment needs.
             </p>
           </ScrollAnimation>
           <ScrollAnimation delay={400}>
-            <button className="bg-gray-900 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold hover:bg-gray-800 transition-colors text-base sm:text-lg">
+            <button onClick={() => router.push("https://fithub.ng")} className="bg-gray-900 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-bold hover:bg-gray-800 transition-colors text-base sm:text-lg">
               Get Started Today
             </button>
           </ScrollAnimation>
@@ -365,16 +436,16 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section ref={setRef('contact')} className="py-16 sm:py-20 bg-white">
+      <section id="#contact" ref={setRef('contact')} className="py-16 sm:py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12 sm:mb-16">Our Locations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto">
             <ScrollAnimation>
               <div className="text-center">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#00ffff] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <span className="text-xl sm:text-2xl">🏢</span>
+                  <Building className="w-6 h-6 sm:w-8 sm:h-8 text-[#00ffff]" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Head Office</h3>
+                <h3 className="text-xl text-gray-800 sm:text-2xl font-bold mb-3 sm:mb-4">Head Office</h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   Benin Asaba Express Way<br />
                   By Koka Junction<br />
@@ -386,9 +457,9 @@ export default function Home() {
             <ScrollAnimation delay={200}>
               <div className="text-center">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#00ffff] bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <span className="text-xl sm:text-2xl">📍</span>
+                  <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-[#00ffff]" />
                 </div>
-                <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Branch Office</h3>
+                <h3 className="text-xl sm:text-2xl text-gray-800 font-bold mb-3 sm:mb-4">Branch Office</h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   No 1 Uga Street<br />
                   Bridge Head Market<br />
@@ -407,7 +478,7 @@ export default function Home() {
             <div>
               <div className="flex items-center space-x-2 mb-3 sm:mb-4">
                 <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#00ffff] rounded-full flex items-center justify-center">
-                  <span className="text-gray-900 font-bold text-xs sm:text-sm">FH</span>
+                  <Dumbbell className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900" />
                 </div>
                 <span className="text-lg sm:text-xl font-bold">Ciwaviv</span>
               </div>
@@ -429,8 +500,14 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Contact Info</h4>
               <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
-                <li>Email: info@fithubhealth.com</li>
-                <li>Phone: +234 XXX XXX XXXX</li>
+                <li className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4" />
+                  <span>info@ciwaviv.com</span>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4" />
+                  <span>+234 XXX XXX XXXX</span>
+                </li>
                 <li>Hours: Mon-Sat 8AM-6PM</li>
               </ul>
             </div>
