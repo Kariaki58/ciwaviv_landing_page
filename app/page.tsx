@@ -112,7 +112,7 @@ export default function HomePage() {
       }`}>
         <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#00ffff] rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#265287] rounded-full flex items-center justify-center">
               <Dumbbell className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900" />
             </div>
             <span className="text-lg sm:text-xl font-bold text-gray-800">Ciwaviv</span>
@@ -125,7 +125,7 @@ export default function HomePage() {
                 key={item.id}
                 href={`#${item.id}`}
                 className={`transition-colors flex items-center space-x-1 ${
-                  activeSection === item.id ? 'text-[#00ffff] font-semibold' : 'text-gray-700 hover:text-[#00ffff]'
+                  activeSection === item.id ? 'text-[#265287] font-semibold' : 'text-gray-700 hover:text-[#265287]'
                 }`}
               >
                 {/* <item.icon className="w-4 h-4" /> */}
@@ -138,14 +138,14 @@ export default function HomePage() {
           <div className="md:hidden flex items-center space-x-4">
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 hover:text-[#00ffff] transition-colors p-2"
+              className="text-gray-700 hover:text-[#265287] transition-colors p-2"
             >
               <Menu className="w-6 h-6" />
             </button>
           </div>
 
           {/* Desktop CTA Button */}
-          <button onClick={() => router.push("https://fithub.ng")} className="hidden md:flex items-center space-x-2 bg-[#00ffff] text-gray-900 px-6 py-2 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold">
+          <button onClick={() => router.push("https://fithub.ng")} className="hidden md:flex items-center space-x-2 bg-[#265287] text-gray-50 px-6 py-2 rounded-full hover:bg-[#265287ce] transition-colors text-base font-semibold">
             {/* <Phone className="w-4 h-4" /> */}
             <span>Get Started</span>
           </button>
@@ -168,7 +168,7 @@ export default function HomePage() {
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-gray-200">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-[#00ffff] rounded-full flex items-center justify-center">
+              <div className="w-10 h-10 bg-[#265287] rounded-full flex items-center justify-center">
                 <Dumbbell className="w-5 h-5 text-gray-900" />
               </div>
               <span className="text-xl font-bold text-gray-800">Ciwaviv</span>
@@ -198,7 +198,7 @@ export default function HomePage() {
             </nav>
 
             {/* CTA Button */}
-            <button onClick={() => router.push("https://fithub.ng")} className="w-full mt-8 flex items-center justify-center space-x-2 bg-[#00ffff] text-gray-900 px-6 py-4 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold">
+            <button onClick={() => router.push("https://fithub.ng")} className="w-full mt-8 flex items-center justify-center space-x-2 bg-[#265287] text-gray-900 px-6 py-4 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold">
               {/* <Phone className="w-5 h-5" /> */}
               <span>Get Started</span>
             </button>
@@ -231,7 +231,7 @@ export default function HomePage() {
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
             Elevate Your 
-            <span className="text-[#00ffff]"> Wellness</span> 
+            <span className="text-[#265287]"> Wellness</span> 
             Journey
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
@@ -239,10 +239,10 @@ export default function HomePage() {
             clinics, and gyms across Nigeria to achieve fitness and recovery goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button onClick={() => router.push("https://fithub.ng/shop")} className="bg-[#00ffff] text-gray-900 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#00e6e6] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
+            <button onClick={() => router.push("https://fithub.ng/shop")} className="bg-[#265287] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
               Explore Products
             </button>
-            <button className="border-2 border-[#00ffff] text-[#00ffff] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#00ffff] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
+            <button className="border-2 border-[#265287] text-[#265287] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
               Contact Us
             </button>
           </div>
@@ -265,19 +265,19 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center">
             <ScrollAnimation>
               <div className="p-4 sm:p-6">
-                <div className="text-3xl sm:text-4xl font-bold text-[#00ffff] mb-2">500+</div>
+                <div className="text-3xl sm:text-4xl font-bold text-[#265287] mb-2">500+</div>
                 <div className="text-gray-600 text-sm sm:text-base">Products Available</div>
               </div>
             </ScrollAnimation>
             <ScrollAnimation delay={200}>
               <div className="p-4 sm:p-6">
-                <div className="text-3xl sm:text-4xl font-bold text-[#00ffff] mb-2">100+</div>
+                <div className="text-3xl sm:text-4xl font-bold text-[#265287] mb-2">100+</div>
                 <div className="text-gray-600 text-sm sm:text-base">Partner Brands</div>
               </div>
             </ScrollAnimation>
             <ScrollAnimation delay={400}>
               <div className="p-4 sm:p-6">
-                <div className="text-3xl sm:text-4xl font-bold text-[#00ffff] mb-2">50+</div>
+                <div className="text-3xl sm:text-4xl font-bold text-[#265287] mb-2">50+</div>
                 <div className="text-gray-600 text-sm sm:text-base">Cities Served</div>
               </div>
             </ScrollAnimation>
@@ -302,9 +302,9 @@ export default function HomePage() {
                   supporting a culture of health, strength, and resilience.
                 </p>
                 <div className="flex flex-wrap gap-2 sm:gap-4">
-                  <div className="bg-[#00ffff] bg-opacity-20 text-gray-800 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Quality Equipment</div>
-                  <div className="bg-[#00ffff] bg-opacity-20 text-gray-800 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Trusted Brands</div>
-                  <div className="bg-[#00ffff] bg-opacity-20 text-gray-800 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Expert Support</div>
+                  <div className="bg-[#265287] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Quality Equipment</div>
+                  <div className="bg-[#265287] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Trusted Brands</div>
+                  <div className="bg-[#265287] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Expert Support</div>
                 </div>
               </div>
             </ScrollAnimation>
@@ -331,7 +331,7 @@ export default function HomePage() {
             <ScrollAnimation>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20  bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Shield className="w-8 h-8 sm:w-20 sm:h-20 text-[#00ffff]" />
+                  <Shield className="w-8 h-8 sm:w-20 sm:h-20 text-[#265287]" />
                 </div>
                 <h3 className="text-lg text-gray-800 sm:text-xl font-bold mb-3 sm:mb-4">Quality You Can Trust</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
@@ -344,7 +344,7 @@ export default function HomePage() {
             <ScrollAnimation delay={200}>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Lightbulb className="w-8 h-8 sm:w-20 sm:h-20 text-[#00ffff]" />
+                  <Lightbulb className="w-8 h-8 sm:w-20 sm:h-20 text-[#265287]" />
                 </div>
                 <h3 className="text-lg sm:text-xl text-gray-800 font-bold mb-3 sm:mb-4">Innovation That Inspires</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
@@ -357,7 +357,7 @@ export default function HomePage() {
             <ScrollAnimation delay={400}>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Users className="w-8 h-8 sm:w-20 sm:h-20 text-[#00ffff]" />
+                  <Users className="w-8 h-8 sm:w-20 sm:h-20 text-[#265287]" />
                 </div>
                 <h3 className="text-lg sm:text-xl text-gray-800 font-bold mb-3 sm:mb-4">Community & Care</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
@@ -414,15 +414,15 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 bg-[#00ffff]">
+      <section className="py-16 sm:py-20 bg-[#265287]">
         <div className="container mx-auto px-4 text-center">
           <ScrollAnimation>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-50 mb-4 sm:mb-6">
               Ready to Transform Your Wellness Journey?
             </h2>
           </ScrollAnimation>
           <ScrollAnimation delay={200}>
-            <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 font-medium">
+            <p className="text-lg sm:text-xl text-gray-100 mb-6 sm:mb-8 max-w-2xl mx-auto px-4 font-medium">
               Join thousands of satisfied customers across Nigeria who trust Ciwaviv 
               for their health and fitness equipment needs.
             </p>
@@ -441,9 +441,9 @@ export default function HomePage() {
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12 sm:mb-16">Our Locations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 max-w-4xl mx-auto">
             <ScrollAnimation>
-              <div className="text-center">
+              <div className="text-center bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border">
                 <div className="w-14 h-14 sm:w-16 sm:h-16  bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Building className="w-8 h-8 sm:w-12 sm:h-12 text-[#00ffff]" />
+                  <Building className="w-8 h-8 sm:w-12 sm:h-12 text-[#265287]" />
                 </div>
                 <h3 className="text-xl text-gray-800 sm:text-2xl font-bold mb-3 sm:mb-4">Head Office</h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -455,9 +455,9 @@ export default function HomePage() {
             </ScrollAnimation>
             
             <ScrollAnimation delay={200}>
-              <div className="text-center">
+              <div className="text-center bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-[#00ffff]" />
+                  <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-[#265287]" />
                 </div>
                 <h3 className="text-xl sm:text-2xl text-gray-800 font-bold mb-3 sm:mb-4">Branch Office</h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -477,7 +477,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-3 sm:mb-4">
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#00ffff] rounded-full flex items-center justify-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#265287] rounded-full flex items-center justify-center">
                   <Dumbbell className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900" />
                 </div>
                 <span className="text-lg sm:text-xl font-bold">Ciwaviv</span>
@@ -490,10 +490,10 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
               <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
-                <li><a href="#about" className="hover:text-[#00ffff] transition-colors">About</a></li>
-                <li><a href="#values" className="hover:text-[#00ffff] transition-colors">Values</a></li>
-                <li><a href="#services" className="hover:text-[#00ffff] transition-colors">Services</a></li>
-                <li><a href="#contact" className="hover:text-[#00ffff] transition-colors">Contact</a></li>
+                <li><a href="#about" className="hover:text-[#265287] transition-colors">About</a></li>
+                <li><a href="#values" className="hover:text-[#265287] transition-colors">Values</a></li>
+                <li><a href="#services" className="hover:text-[#265287] transition-colors">Services</a></li>
+                <li><a href="#contact" className="hover:text-[#265287] transition-colors">Contact</a></li>
               </ul>
             </div>
             
@@ -515,13 +515,13 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Follow Us</h4>
               <div className="flex space-x-3 sm:space-x-4">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ffff] hover:text-gray-900 transition-colors cursor-pointer">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
                   <span className="text-white text-sm sm:text-base">f</span>
                 </div>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ffff] hover:text-gray-900 transition-colors cursor-pointer">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
                   <span className="text-white text-sm sm:text-base">t</span>
                 </div>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#00ffff] hover:text-gray-900 transition-colors cursor-pointer">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
                   <span className="text-white text-sm sm:text-base">i</span>
                 </div>
               </div>
