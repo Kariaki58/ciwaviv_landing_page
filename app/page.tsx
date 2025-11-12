@@ -22,10 +22,11 @@ export default function HomePage() {
 
   const router = useRouter();
 
+  // Handle scroll events
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      
+
       // Update active section based on scroll position
       const sections = ['home', 'about', 'values', 'services', 'contact'];
       const scrollPosition = window.scrollY + 100;
@@ -35,7 +36,7 @@ export default function HomePage() {
         if (element) {
           const offsetTop = element.offsetTop;
           const height = element.offsetHeight;
-          
+
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
             setActiveSection(section);
             break;
@@ -48,10 +49,24 @@ export default function HomePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Function to set section refs
   const setRef = (section: string) => (el: HTMLElement | null) => {
     sectionRefs.current[section] = el;
   };
 
+  // Smooth scroll handler
+  const handleScrollToSection = (section: string) => {
+    setIsMobileMenuOpen(false);
+    const element = sectionRefs.current[section];
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: 'smooth',
+      });
+    }
+  };
+
+  // Scroll animation component
   const ScrollAnimation = ({ children, delay = 0 }: ScrollAnimationProps) => {
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -60,25 +75,15 @@ export default function HomePage() {
       const observer = new IntersectionObserver(
         ([entry]) => {
           if (entry.isIntersecting) {
-            setTimeout(() => {
-              setIsVisible(true);
-            }, delay);
+            setTimeout(() => setIsVisible(true), delay);
           }
         },
-        {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        }
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
       );
 
-      if (ref.current) {
-        observer.observe(ref.current);
-      }
-
+      if (ref.current) observer.observe(ref.current);
       return () => {
-        if (ref.current) {
-          observer.unobserve(ref.current);
-        }
+        if (ref.current) observer.unobserve(ref.current);
       };
     }, [delay]);
 
@@ -86,9 +91,7 @@ export default function HomePage() {
       <div
         ref={ref}
         className={`transition-all duration-700 transform ${
-          isVisible
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-8'
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
       >
         {children}
@@ -105,11 +108,13 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-[#f0fdff] font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-[#f0fdff] font-sans scroll-smooth">
       {/* Navigation */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg py-2' : 'bg-transparent py-4'
-      }`}>
+      <nav
+        className={`fixed w-full z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-white shadow-lg py-2' : 'bg-transparent py-4'
+        }`}
+      >
         <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#265287] rounded-full flex items-center justify-center">
@@ -117,26 +122,27 @@ export default function HomePage() {
             </div>
             <span className="text-lg sm:text-xl font-bold text-gray-800">Ciwaviv</span>
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navigationItems.slice(1).map((item) => (
-              <a
+              <button
                 key={item.id}
-                href={`#${item.id}`}
+                onClick={() => handleScrollToSection(item.id)}
                 className={`transition-colors flex items-center space-x-1 ${
-                  activeSection === item.id ? 'text-[#265287] font-semibold' : 'text-gray-700 hover:text-[#265287]'
+                  activeSection === item.id
+                    ? 'text-[#265287] font-semibold'
+                    : 'text-gray-700 hover:text-[#265287]'
                 }`}
               >
-                {/* <item.icon className="w-4 h-4" /> */}
                 <span>{item.label}</span>
-              </a>
+              </button>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-gray-700 hover:text-[#265287] transition-colors p-2"
             >
@@ -145,24 +151,24 @@ export default function HomePage() {
           </div>
 
           {/* Desktop CTA Button */}
-          <button onClick={() => router.push("https://fithub.ng")} className="hidden md:flex items-center space-x-2 bg-[#265287] text-gray-50 px-6 py-2 rounded-full hover:bg-[#265287ce] transition-colors text-base font-semibold">
-            {/* <Phone className="w-4 h-4" /> */}
+          <button
+            onClick={() => router.push('https://fithub.ng')}
+            className="hidden md:flex items-center space-x-2 bg-[#265287] text-gray-50 px-6 py-2 rounded-full hover:bg-[#265287ce] transition-colors text-base font-semibold"
+          >
             <span>Get Started</span>
           </button>
         </div>
       </nav>
 
       {/* Mobile Sidebar */}
-      <div className={`
-        fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out md:hidden
-        ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}
-      `}>
+      <div
+        className={`fixed inset-0 z-50 transform transition-transform duration-300 ease-in-out md:hidden ${
+          isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
         {/* Backdrop */}
-        <div 
-          className="absolute "
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-        
+        <div className="absolute inset-0 bg-black bg-opacity-40" onClick={() => setIsMobileMenuOpen(false)} />
+
         {/* Sidebar */}
         <div className="relative w-80 max-w-full h-full bg-white shadow-xl">
           {/* Header */}
@@ -173,7 +179,7 @@ export default function HomePage() {
               </div>
               <span className="text-xl font-bold text-gray-800">Ciwaviv</span>
             </div>
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
@@ -185,21 +191,22 @@ export default function HomePage() {
           <div className="p-6">
             <nav className="space-y-4">
               {navigationItems.map((item) => (
-                <a
+                <button
                   key={item.id}
-                  href={`#${item.id}`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 p-3 rounded-lg transition-al text-gray-800`}
+                  onClick={() => handleScrollToSection(item.id)}
+                  className="flex items-center space-x-3 p-3 rounded-lg transition-all text-gray-800 w-full text-left"
                 >
                   <item.icon className="w-5 h-5" />
                   <span className="text-lg">{item.label}</span>
-                </a>
+                </button>
               ))}
             </nav>
 
             {/* CTA Button */}
-            <button onClick={() => router.push("https://fithub.ng")} className="w-full mt-8 flex items-center justify-center space-x-2 bg-[#265287] text-gray-900 px-6 py-4 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold">
-              {/* <Phone className="w-5 h-5" /> */}
+            <button
+              onClick={() => router.push('https://fithub.ng')}
+              className="w-full mt-8 flex items-center justify-center space-x-2 bg-[#265287] text-gray-900 px-6 py-4 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold"
+            >
               <span>Get Started</span>
             </button>
 
@@ -220,29 +227,30 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Hero Section */}
+      {/* === HERO SECTION === */}
       <section ref={setRef('home')} className="pt-28 pb-16 sm:pt-32 sm:pb-20 px-4 relative overflow-hidden">
-        {/* Grid Background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff20_1px,transparent_1px),linear-gradient(to_bottom,#00ffff20_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent_70%)]"></div>
-        
-        {/* Animated Pulse */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff40_1px,transparent_1px),linear-gradient(to_bottom,#00ffff40_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent_70%)] animate-pulse-slow"></div>
-        
+
         <div className="container mx-auto text-center relative z-10">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-            Elevate Your 
-            <span className="text-[#265287]"> Wellness</span> 
-            Journey
+            Elevate Your <span className="text-[#265287]">Wellness</span> Journey
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-            Quality sports, physiotherapy, and health equipment empowering individuals, 
+            Quality sports, physiotherapy, and health equipment empowering individuals,
             clinics, and gyms across Nigeria to achieve fitness and recovery goals.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button onClick={() => router.push("https://fithub.ng/shop")} className="bg-[#265287] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
+            <button
+              onClick={() => router.push('https://fithub.ng/shop')}
+              className="bg-[#265287] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
+            >
               Explore Products
             </button>
-            <button className="border-2 border-[#265287] text-[#265287] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl">
+            <button
+              onClick={() => handleScrollToSection('contact')}
+              className="border-2 border-[#265287] text-[#265287] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
+            >
               Contact Us
             </button>
           </div>
@@ -250,8 +258,13 @@ export default function HomePage() {
 
         <style jsx>{`
           @keyframes pulse-slow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
+            0%,
+            100% {
+              opacity: 0.3;
+            }
+            50% {
+              opacity: 0.6;
+            }
           }
           .animate-pulse-slow {
             animation: pulse-slow 4s ease-in-out infinite;
