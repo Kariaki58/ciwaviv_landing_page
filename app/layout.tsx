@@ -13,34 +13,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CIWAVIV | Wellness, Fitness & Rehabilitation Solutions in Nigeria",
+  title: "FitHub Health Co. Ltd | Quality Sports, Physiotherapy & Wellness Equipment in Nigeria",
   description:
-    "CIWAVIV empowers wellness across Nigeria through innovative health solutions, including FitHub — your trusted source for premium sports, physiotherapy, and rehabilitation equipment.",
+    "FitHub Health Co. Ltd promotes wellness through premium sports, physiotherapy, and health equipment. We partner with trusted brands to make fitness and rehabilitation accessible across Nigeria.",
   keywords: [
-    "CIWAVIV",
-    "FitHub",
-    "sports equipment Nigeria",
+    "FitHub Nigeria",
+    "sports equipment",
     "physiotherapy equipment",
-    "wellness company",
-    "health technology",
-    "rehabilitation tools",
+    "wellness company Nigeria",
     "fitness gear",
     "gym equipment",
-    "Nigeria wellness solutions",
+    "rehabilitation tools",
+    "health and fitness Nigeria",
   ],
-  authors: [{ name: "CIWAVIV", url: "https://ciwaviv.com" }],
+  authors: [{ name: "FitHub Health Co. Ltd", url: "https://fithub.com.ng" }],
   openGraph: {
-    title: "CIWAVIV | Empowering Wellness Through Innovation & Quality",
+    title: "FitHub Health Co. Ltd | Wellness, Fitness & Rehabilitation Equipment",
     description:
-      "CIWAVIV promotes health and wellness in Nigeria through innovative solutions and brands like FitHub — offering premium sports, physiotherapy, and fitness equipment for all.",
+      "Explore quality sports, physiotherapy, and wellness equipment from FitHub Health Co. Ltd — empowering individuals, clinics, and gyms across Nigeria.",
     url: "https://ciwaviv.com",
-    siteName: "CIWAVIV",
+    siteName: "FitHub Health Co. Ltd",
     images: [
       {
-        url: "https://ciwaviv.com/og-image.jpg",
+        url: "https://fithub.com.ng/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "CIWAVIV – Wellness & Fitness Solutions in Nigeria",
+        alt: "FitHub Health Co. Ltd – Wellness & Fitness Equipment",
       },
     ],
     locale: "en_NG",
@@ -48,15 +46,15 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "CIWAVIV | Empowering Wellness & Performance in Nigeria",
+    title: "FitHub Health Co. Ltd | Quality Sports & Physiotherapy Equipment",
     description:
-      "Discover CIWAVIV — a Nigerian wellness brand dedicated to quality health solutions and equipment through its subsidiary, FitHub Health Co. Ltd.",
-    images: ["https://ciwaviv.com/og-image.jpg"],
-    creator: "@Ciwaviv",
+      "Making fitness and rehabilitation accessible through durable, affordable, and effective health equipment in Nigeria.",
+    images: ["https://fithub.com.ng/og-image.jpg"],
+    creator: "@FitHub_NG",
   },
-  metadataBase: new URL("https://ciwaviv.com"),
+  metadataBase: new URL("https://fithub.com.ng"),
   alternates: {
-    canonical: "https://ciwaviv.com",
+    canonical: "https://fithub.com.ng",
   },
   robots: {
     index: true,
@@ -72,7 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased"
       >
         {children}
       </body>

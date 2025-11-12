@@ -1,4 +1,3 @@
-// app/page.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -112,8 +111,11 @@ export default function HomePage() {
       {/* Navigation */}
       <nav
         className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-lg py-2' : 'bg-transparent py-4'
+          isScrolled
+            ? 'backdrop-blur-md bg-white/40 shadow-lg border-b border-white/20 py-2'
+            : 'bg-transparent py-4'
         }`}
+
       >
         <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
           <div className="flex items-center space-x-2">
@@ -228,48 +230,47 @@ export default function HomePage() {
       </div>
 
       {/* === HERO SECTION === */}
-      <section ref={setRef('home')} className="pt-28 pb-16 sm:pt-32 sm:pb-20 px-4 relative overflow-hidden">
+      <section className="pt-28 pb-16 sm:pt-32 sm:pb-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff20_1px,transparent_1px),linear-gradient(to_bottom,#00ffff20_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent_70%)]"></div>
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff40_1px,transparent_1px),linear-gradient(to_bottom,#00ffff40_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent_70%)] animate-pulse-slow"></div>
 
-        <div className="container mx-auto text-center relative z-10">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-            Elevate Your <span className="text-[#265287]">Wellness</span> Journey
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-4">
-            Quality sports, physiotherapy, and health equipment empowering individuals,
-            clinics, and gyms across Nigeria to achieve fitness and recovery goals.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
-            <button
-              onClick={() => router.push('https://fithub.ng/shop')}
-              className="bg-[#265287] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
-            >
-              Explore Products
-            </button>
-            <button
-              onClick={() => handleScrollToSection('contact')}
-              className="border-2 border-[#265287] text-[#265287] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
-            >
-              Contact Us
-            </button>
+        <div className="container mx-auto relative z-10">
+          <div className="flex flex-col lg:flex-row items-center">
+            <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0 lg:pr-10">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                Elevate Your <span className="text-[#265287]">Wellness</span> Journey
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Quality sports, physiotherapy, and health equipment empowering individuals,
+                clinics, and gyms across Nigeria to achieve fitness and recovery goals.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                <button
+                  className="bg-[#265287] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
+                >
+                  Explore Products
+                </button>
+                <button
+                  className="border-2 border-[#265287] text-[#265287] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
+                >
+                  Contact Us
+                </button>
+              </div>
+            </div>
+            
+            <div className="lg:w-1/2 flex justify-center">
+              <div className="relative w-full max-w-md lg:max-w-full">
+                <div className="rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src="/banner.png" 
+                    alt="Fitness equipment and wellness products" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes pulse-slow {
-            0%,
-            100% {
-              opacity: 0.3;
-            }
-            50% {
-              opacity: 0.6;
-            }
-          }
-          .animate-pulse-slow {
-            animation: pulse-slow 4s ease-in-out infinite;
-          }
-        `}</style>
       </section>
 
       {/* Stats Section */}
