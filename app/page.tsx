@@ -134,8 +134,8 @@ export default function HomePage() {
                 onClick={() => handleScrollToSection(item.id)}
                 className={`transition-colors flex items-center space-x-1 ${
                   activeSection === item.id
-                    ? 'text-[#032ca6] font-semibold'
-                    : 'text-gray-700 hover:text-[#032ca6]'
+                    ? 'text-[#265287] font-semibold'
+                    : 'text-gray-700 hover:text-[#265287]'
                 }`}
               >
                 <span>{item.label}</span>
@@ -147,7 +147,7 @@ export default function HomePage() {
           <div className="md:hidden flex items-center space-x-4">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 hover:text-[#032ca6] transition-colors p-2"
+              className="text-gray-700 hover:text-[#265287] transition-colors p-2"
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -156,7 +156,7 @@ export default function HomePage() {
           {/* Desktop CTA Button */}
           <button
             onClick={() => router.push('https://fithub.ng')}
-            className="hidden md:flex items-center space-x-2 bg-[#032ca6] text-gray-50 px-6 py-2 rounded-full hover:bg-[#032ca6ce] transition-colors text-base font-semibold"
+            className="hidden md:flex items-center space-x-2 bg-[#265287] text-gray-50 px-6 py-2 rounded-full hover:bg-[#265287ce] transition-colors text-base font-semibold"
           >
             <span>Get Started</span>
           </button>
@@ -207,7 +207,7 @@ export default function HomePage() {
             {/* CTA Button */}
             <button
               onClick={() => router.push('https://fithub.ng')}
-              className="w-full mt-8 flex items-center justify-center space-x-2 bg-[#032ca6] text-gray-900 px-6 py-4 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold"
+              className="w-full mt-8 flex items-center justify-center space-x-2 bg-[#265287] text-gray-900 px-6 py-4 rounded-full hover:bg-[#00e6e6] transition-colors text-base font-semibold"
             >
               <span>Get Started</span>
             </button>
@@ -219,7 +219,7 @@ export default function HomePage() {
                 {/* Clickable email */}
                 <a
                   href="mailto:admin@ciwaviv.com"
-                  className="flex items-center space-x-3 text-gray-600 hover:text-[#032ca6] transition-colors"
+                  className="flex items-center space-x-3 text-gray-600 hover:text-[#265287] transition-colors"
                 >
                   <Mail className="w-4 h-4" />
                   <span className="text-sm">admin@ciwaviv.com</span>
@@ -228,7 +228,7 @@ export default function HomePage() {
                 {/* Clickable phone */}
                 <a
                   href="tel:08036862816"
-                  className="flex items-center space-x-3 text-gray-600 hover:text-[#032ca6] transition-colors"
+                  className="flex items-center space-x-3 text-gray-600 hover:text-[#265287] transition-colors"
                 >
                   <Phone className="w-4 h-4" />
                   <span className="text-sm">08036862816</span>
@@ -263,7 +263,7 @@ export default function HomePage() {
             </div>
             <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0 lg:pl-10">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
-                Elevate Your <span className="text-[#032ca6]">Wellness</span> Journey
+                Elevate Your <span className="text-[#265287]">Wellness</span> Journey
               </h1>
               <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Quality sports, physiotherapy, and health equipment empowering individuals,
@@ -272,13 +272,13 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <button
                   onClick={() => router.push('https://fithub.ng/shop')}
-                  className="bg-[#032ca6] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#032ca6ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
+                  className="bg-[#265287] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
                 >
                   Explore Products
                 </button>
                 <button
                   onClick={() => handleScrollToSection('contact')}
-                  className="border-2 border-[#032ca6] text-[#032ca6] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#032ca6] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
+                  className="border-2 border-[#265287] text-[#265287] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
                 >
                   Contact Us
                 </button>
@@ -294,19 +294,19 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center">
             <ScrollAnimation>
               <div className="p-4 sm:p-6">
-                <div className="text-3xl sm:text-4xl font-bold text-[#032ca6] mb-2">500+</div>
+                <div className="text-3xl sm:text-4xl font-bold text-[#265287] mb-2">500+</div>
                 <div className="text-gray-600 text-sm sm:text-base">Products Available</div>
               </div>
             </ScrollAnimation>
             <ScrollAnimation delay={200}>
               <div className="p-4 sm:p-6">
-                <div className="text-3xl sm:text-4xl font-bold text-[#032ca6] mb-2">100+</div>
+                <div className="text-3xl sm:text-4xl font-bold text-[#265287] mb-2">100+</div>
                 <div className="text-gray-600 text-sm sm:text-base">Partner Brands</div>
               </div>
             </ScrollAnimation>
             <ScrollAnimation delay={400}>
               <div className="p-4 sm:p-6">
-                <div className="text-3xl sm:text-4xl font-bold text-[#032ca6] mb-2">50+</div>
+                <div className="text-3xl sm:text-4xl font-bold text-[#265287] mb-2">50+</div>
                 <div className="text-gray-600 text-sm sm:text-base">Cities Served</div>
               </div>
             </ScrollAnimation>
@@ -331,9 +331,9 @@ export default function HomePage() {
                   supporting a culture of health, strength, and resilience.
                 </p>
                 <div className="flex flex-wrap gap-2 sm:gap-4">
-                  <div className="bg-[#032ca6] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Quality Equipment</div>
-                  <div className="bg-[#032ca6] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Trusted Brands</div>
-                  <div className="bg-[#032ca6] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Expert Support</div>
+                  <div className="bg-[#265287] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Quality Equipment</div>
+                  <div className="bg-[#265287] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Trusted Brands</div>
+                  <div className="bg-[#265287] bg-opacity-20 text-gray-50 px-3 py-1 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-medium">Expert Support</div>
                 </div>
               </div>
             </ScrollAnimation>
@@ -360,7 +360,7 @@ export default function HomePage() {
             <ScrollAnimation>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20  bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Shield className="w-8 h-8 sm:w-20 sm:h-20 text-[#032ca6]" />
+                  <Shield className="w-8 h-8 sm:w-20 sm:h-20 text-[#265287]" />
                 </div>
                 <h3 className="text-lg text-gray-800 sm:text-xl font-bold mb-3 sm:mb-4">Quality You Can Trust</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
@@ -373,7 +373,7 @@ export default function HomePage() {
             <ScrollAnimation delay={200}>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Lightbulb className="w-8 h-8 sm:w-20 sm:h-20 text-[#032ca6]" />
+                  <Lightbulb className="w-8 h-8 sm:w-20 sm:h-20 text-[#265287]" />
                 </div>
                 <h3 className="text-lg sm:text-xl text-gray-800 font-bold mb-3 sm:mb-4">Innovation That Inspires</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
@@ -386,7 +386,7 @@ export default function HomePage() {
             <ScrollAnimation delay={400}>
               <div className="text-center p-4 sm:p-6">
                 <div className="w-16 h-16 sm:w-20 sm:h-20 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Users className="w-8 h-8 sm:w-20 sm:h-20 text-[#032ca6]" />
+                  <Users className="w-8 h-8 sm:w-20 sm:h-20 text-[#265287]" />
                 </div>
                 <h3 className="text-lg sm:text-xl text-gray-800 font-bold mb-3 sm:mb-4">Community & Care</h3>
                 <p className="text-gray-600 text-sm sm:text-base">
@@ -459,7 +459,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 bg-[#032ca6]">
+      <section className="py-16 sm:py-20 bg-[#265287]">
         <div className="container mx-auto px-4 text-center">
           <ScrollAnimation>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-50 mb-4 sm:mb-6">
@@ -488,7 +488,7 @@ export default function HomePage() {
             <ScrollAnimation>
               <div className="text-center bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border">
                 <div className="w-14 h-14 sm:w-16 sm:h-16  bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <Building className="w-8 h-8 sm:w-12 sm:h-12 text-[#032ca6]" />
+                  <Building className="w-8 h-8 sm:w-12 sm:h-12 text-[#265287]" />
                 </div>
                 <h3 className="text-xl text-gray-800 sm:text-2xl font-bold mb-3 sm:mb-4">Head Office</h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -502,7 +502,7 @@ export default function HomePage() {
             <ScrollAnimation delay={200}>
               <div className="text-center bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border">
                 <div className="w-14 h-14 sm:w-16 sm:h-16 bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                  <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-[#032ca6]" />
+                  <MapPin className="w-8 h-8 sm:w-12 sm:h-12 text-[#265287]" />
                 </div>
                 <h3 className="text-xl sm:text-2xl text-gray-800 font-bold mb-3 sm:mb-4">Branch Office</h3>
                 <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -532,10 +532,10 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Quick Links</h4>
               <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
-                <li><a href="#about" className="hover:text-[#032ca6] transition-colors">About</a></li>
-                <li><a href="#values" className="hover:text-[#032ca6] transition-colors">Values</a></li>
-                <li><a href="#services" className="hover:text-[#032ca6] transition-colors">Services</a></li>
-                <li><a href="#contact" className="hover:text-[#032ca6] transition-colors">Contact</a></li>
+                <li><a href="#about" className="hover:text-[#265287] transition-colors">About</a></li>
+                <li><a href="#values" className="hover:text-[#265287] transition-colors">Values</a></li>
+                <li><a href="#services" className="hover:text-[#265287] transition-colors">Services</a></li>
+                <li><a href="#contact" className="hover:text-[#265287] transition-colors">Contact</a></li>
               </ul>
             </div>
             
@@ -547,7 +547,7 @@ export default function HomePage() {
                 <li>
                   <a
                     href="mailto:admin@ciwaviv.com"
-                    className="flex items-center space-x-2 hover:text-[#032ca6] transition-colors"
+                    className="flex items-center space-x-2 hover:text-[#265287] transition-colors"
                   >
                     <Mail className="w-4 h-4" />
                     <span>admin@ciwaviv.com</span>
@@ -558,7 +558,7 @@ export default function HomePage() {
                 <li>
                   <a
                     href="tel:08036862816"
-                    className="flex items-center space-x-2 hover:text-[#032ca6] transition-colors"
+                    className="flex items-center space-x-2 hover:text-[#265287] transition-colors"
                   >
                     <Phone className="w-4 h-4" />
                     <span>08036862816</span>
@@ -573,13 +573,13 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Follow Us</h4>
               <div className="flex space-x-3 sm:space-x-4">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#032ca6] hover:text-gray-900 transition-colors cursor-pointer">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
                   <span className="text-white text-sm sm:text-base">f</span>
                 </div>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#032ca6] hover:text-gray-900 transition-colors cursor-pointer">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
                   <span className="text-white text-sm sm:text-base">t</span>
                 </div>
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#032ca6] hover:text-gray-900 transition-colors cursor-pointer">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
                   <span className="text-white text-sm sm:text-base">i</span>
                 </div>
               </div>
