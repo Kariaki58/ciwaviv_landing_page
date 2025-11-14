@@ -247,7 +247,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff40_1px,transparent_1px),linear-gradient(to_bottom,#00ffff40_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent_70%)] animate-pulse-slow"></div>
 
         <div className="container mx-auto relative z-10">
-          <div className="flex flex-col lg:flex-row items-center">
+          <div className="flex flex-col-reverse lg:flex-row items-center">
             
             
             <div className="lg:w-1/2 flex justify-center">
