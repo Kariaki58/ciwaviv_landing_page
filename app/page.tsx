@@ -403,7 +403,7 @@ export default function HomePage() {
       <section ref={setRef('services')} className="py-16 sm:py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12 sm:mb-16">Who We Serve</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <ScrollAnimation>
               <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
                 {/* <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏠</div> */}
@@ -435,6 +435,22 @@ export default function HomePage() {
                   <li>• Physiotherapy tools</li>
                   <li>• Rehabilitation machines</li>
                   <li>• Commercial wellness solutions</li>
+                </ul>
+              </div>
+            </ScrollAnimation>
+
+            <ScrollAnimation delay={200}>
+              <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                {/* <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">🏥</div> */}
+                <h3 className="text-xl sm:text-2xl font-bold mb-3 text-gray-800 sm:mb-4">Sporting Facilities</h3>
+                <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+                  Empower your athletes and teams with premium, high-performance sports equipment designed to support training, conditioning, and peak performance across all levels.
+                </p>
+                <ul className="space-y-1 sm:space-y-2 text-gray-600 text-sm sm:text-base">
+                  <li>• Sports training equipment</li>
+                  <li>• Strength & conditioning tools</li>
+                  <li>• Field & court accessories</li>
+                  <li>• Performance and recovery solutions</li>
                 </ul>
               </div>
             </ScrollAnimation>
