@@ -38,7 +38,7 @@ export const metadata: Metadata = {
         url: "https://ciwaviv.com/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "FitHub Health Co. Ltd – Wellness & Fitness Equipment",
+        alt: "FitHub Health Co. Ltd Wellness & Fitness Equipment",
       },
     ],
     locale: "en_NG",
