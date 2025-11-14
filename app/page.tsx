@@ -4,7 +4,10 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Dumbbell, Shield, Lightbulb, Users, Home, Building, MapPin, Phone, Mail } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Logo from '@/components/logo';
+import FooterLogo from '@/components/Logo_2';
 import Link from 'next/link';
+import { Facebook, Twitter, Instagram } from "lucide-react";
+
 
 interface ScrollAnimationProps {
   children: React.ReactNode;
@@ -522,7 +525,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-3 sm:mb-4">
-                <Logo />
+                <FooterLogo />
               </div>
               <p className="text-gray-400 text-sm sm:text-base">
                 Empowering wellness through quality equipment and trusted partnerships.
@@ -568,19 +571,19 @@ export default function HomePage() {
                 <li>Hours: Mon–Sat 8AM–6PM</li>
               </ul>
             </div>
-
-            
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Follow Us</h4>
               <div className="flex space-x-3 sm:space-x-4">
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
-                  <span className="text-white text-sm sm:text-base">f</span>
+                  <Facebook className="text-white w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
+
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
-                  <span className="text-white text-sm sm:text-base">t</span>
+                  <Twitter className="text-white w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
+
                 <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
-                  <span className="text-white text-sm sm:text-base">i</span>
+                  <Instagram className="text-white w-4 h-4 sm:w-5 sm:h-5" />
                 </div>
               </div>
             </div>
