@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FitHub Health Co. Ltd | Quality Sports, Physiotherapy & Wellness Equipment in Nigeria",
+  title: "Ciwaviv Global Resource Limited | Quality Sports, Physiotherapy & Wellness Equipment in Nigeria",
   description:
     "FitHub Health Co. Ltd promotes wellness through premium sports, physiotherapy, and health equipment. We partner with trusted brands to make fitness and rehabilitation accessible across Nigeria.",
   keywords: [
@@ -26,16 +26,16 @@ export const metadata: Metadata = {
     "rehabilitation tools",
     "health and fitness Nigeria",
   ],
-  authors: [{ name: "FitHub Health Co. Ltd", url: "https://fithub.com.ng" }],
+  authors: [{ name: "FitHub Health Co. Ltd", url: "https://ciwaviv.com" }],
   openGraph: {
     title: "FitHub Health Co. Ltd | Wellness, Fitness & Rehabilitation Equipment",
     description:
-      "Explore quality sports, physiotherapy, and wellness equipment from FitHub Health Co. Ltd — empowering individuals, clinics, and gyms across Nigeria.",
+      "Explore quality sports, physiotherapy, and wellness equipment from FitHub Health Co. Ltd empowering individuals, clinics, and gyms across Nigeria.",
     url: "https://ciwaviv.com",
     siteName: "FitHub Health Co. Ltd",
     images: [
       {
-        url: "https://fithub.com.ng/og-image.jpg",
+        url: "https://ciwaviv.com/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "FitHub Health Co. Ltd – Wellness & Fitness Equipment",

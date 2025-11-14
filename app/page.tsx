@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Dumbbell, Shield, Lightbulb, Users, Home, Building, MapPin, Phone, Mail } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import Logo from '@/components/logo';
+import Link from 'next/link';
 
 interface ScrollAnimationProps {
   children: React.ReactNode;
@@ -118,12 +120,11 @@ export default function HomePage() {
 
       >
         <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 bg-[#265287] rounded-full flex items-center justify-center">
-              <Dumbbell className="w-4 h-4 sm:w-5 sm:h-5 text-gray-900" />
-            </div>
-            <span className="text-lg sm:text-xl font-bold text-gray-800">Ciwaviv</span>
-          </div>
+          {/* <div className="flex items-center space-x-2"> */}
+          <Link href="/" onClick={() => handleScrollToSection('home')}>
+            <Logo />
+          </Link>
+          {/* </div> */}
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
@@ -169,17 +170,16 @@ export default function HomePage() {
         }`}
       >
         {/* Backdrop */}
-        <div className="absolute inset-0 bg-black bg-opacity-40" onClick={() => setIsMobileMenuOpen(false)} />
+        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
 
         {/* Sidebar */}
         <div className="relative w-80 max-w-full h-full bg-white shadow-xl">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-gray-200">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-[#265287] rounded-full flex items-center justify-center">
-                <Dumbbell className="w-5 h-5 text-gray-900" />
-              </div>
-              <span className="text-xl font-bold text-gray-800">Ciwaviv</span>
+              <Link href="/" onClick={() => handleScrollToSection('home')}>
+                <Logo />
+              </Link> 
             </div>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
@@ -215,16 +215,28 @@ export default function HomePage() {
             {/* Contact Info */}
             <div className="mt-8 pt-8 border-t border-gray-200">
               <div className="space-y-3">
-                <div className="flex items-center space-x-3 text-gray-600">
+                
+                {/* Clickable email */}
+                <a
+                  href="mailto:admin@ciwaviv.com"
+                  className="flex items-center space-x-3 text-gray-600 hover:text-[#265287] transition-colors"
+                >
                   <Mail className="w-4 h-4" />
                   <span className="text-sm">admin@ciwaviv.com</span>
-                </div>
-                <div className="flex items-center space-x-3 text-gray-600">
+                </a>
+
+                {/* Clickable phone */}
+                <a
+                  href="tel:08036862816"
+                  className="flex items-center space-x-3 text-gray-600 hover:text-[#265287] transition-colors"
+                >
                   <Phone className="w-4 h-4" />
-                  <span className="text-sm">+234 XXX XXX XXXX</span>
-                </div>
+                  <span className="text-sm">08036862816</span>
+                </a>
+
               </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -236,7 +248,20 @@ export default function HomePage() {
 
         <div className="container mx-auto relative z-10">
           <div className="flex flex-col lg:flex-row items-center">
-            <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0 lg:pr-10">
+            
+            
+            <div className="lg:w-1/2 flex justify-center">
+              <div className="relative w-full max-w-md lg:max-w-full">
+                <div className="rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src="/hero_banner.png" 
+                    alt="Fitness equipment and wellness products" 
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0 lg:pl-10">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
                 Elevate Your <span className="text-[#265287]">Wellness</span> Journey
               </h1>
@@ -246,27 +271,17 @@ export default function HomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <button
+                  onClick={() => router.push('https://fithub.ng/shop')}
                   className="bg-[#265287] text-gray-50 px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287ce] transition-all transform hover:scale-105 text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
                 >
                   Explore Products
                 </button>
                 <button
+                  onClick={() => handleScrollToSection('contact')}
                   className="border-2 border-[#265287] text-[#265287] px-6 py-3 sm:px-8 sm:py-4 rounded-full hover:bg-[#265287] hover:text-gray-900 transition-all text-base sm:text-lg font-semibold shadow-lg hover:shadow-xl"
                 >
                   Contact Us
                 </button>
-              </div>
-            </div>
-            
-            <div className="lg:w-1/2 flex justify-center">
-              <div className="relative w-full max-w-md lg:max-w-full">
-                <div className="rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
-                  <img 
-                    src="/banner.png" 
-                    alt="Fitness equipment and wellness products" 
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
               </div>
             </div>
           </div>
@@ -491,10 +506,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-3 sm:mb-4">
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#265287] rounded-full flex items-center justify-center">
-                  <Dumbbell className="w-3 h-3 sm:w-4 sm:h-4 text-gray-900" />
-                </div>
-                <span className="text-lg sm:text-xl font-bold">Ciwaviv</span>
+                <Logo />
               </div>
               <p className="text-gray-400 text-sm sm:text-base">
                 Empowering wellness through quality equipment and trusted partnerships.
@@ -514,17 +526,33 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Contact Info</h4>
               <ul className="space-y-1 sm:space-y-2 text-gray-400 text-sm sm:text-base">
-                <li className="flex items-center space-x-2">
-                  <Mail className="w-4 h-4" />
-                  <span>admin@ciwaviv.com</span>
+
+                {/* Clickable Email */}
+                <li>
+                  <a
+                    href="mailto:admin@ciwaviv.com"
+                    className="flex items-center space-x-2 hover:text-[#265287] transition-colors"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>admin@ciwaviv.com</span>
+                  </a>
                 </li>
-                <li className="flex items-center space-x-2">
-                  <Phone className="w-4 h-4" />
-                  <span>+234 XXX XXX XXXX</span>
+
+                {/* Clickable Phone */}
+                <li>
+                  <a
+                    href="tel:08036862816"
+                    className="flex items-center space-x-2 hover:text-[#265287] transition-colors"
+                  >
+                    <Phone className="w-4 h-4" />
+                    <span>08036862816</span>
+                  </a>
                 </li>
-                <li>Hours: Mon-Sat 8AM-6PM</li>
+
+                <li>Hours: Mon–Sat 8AM–6PM</li>
               </ul>
             </div>
+
             
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Follow Us</h4>
