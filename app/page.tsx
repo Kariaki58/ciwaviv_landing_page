@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Dumbbell, Shield, Lightbulb, Users, Home, Building, MapPin, Phone, Mail } from 'lucide-react';
+import { Menu, X, Dumbbell, Shield, Lightbulb, Users, Home, Building, MapPin, Phone, Mail, Linkedin } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import Logo from '@/components/logo';
 import FooterLogo from '@/components/Logo_2';
@@ -52,6 +52,13 @@ export default function HomePage() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const socialMediaLinks = {
+    facebook: 'https://facebook.com/fithubbyciwaviv',
+    twitter: 'https://x.com/fithubbyciwaviv',
+    instagram: 'https://instagram.com/fithubbyciwaviv',
+    linkedin: 'https://www.linkedin.com/company/ciwavivltd'
+  }
 
   // Function to set section refs
   const setRef = (section: string) => (el: HTMLElement | null) => {
@@ -221,20 +228,20 @@ export default function HomePage() {
                 
                 {/* Clickable email */}
                 <a
-                  href="mailto:admin@ciwaviv.com"
+                  href="mailto:info@ciwaviv.com"
                   className="flex items-center space-x-3 text-gray-600 hover:text-[#265287] transition-colors"
                 >
                   <Mail className="w-4 h-4" />
-                  <span className="text-sm">admin@ciwaviv.com</span>
+                  <span className="text-sm">info@ciwaviv.com</span>
                 </a>
 
                 {/* Clickable phone */}
                 <a
-                  href="tel:08036862816"
+                  href="tel:+2347049932998"
                   className="flex items-center space-x-3 text-gray-600 hover:text-[#265287] transition-colors"
                 >
                   <Phone className="w-4 h-4" />
-                  <span className="text-sm">08036862816</span>
+                  <span className="text-sm">+2347049932998</span>
                 </a>
 
               </div>
@@ -549,46 +556,73 @@ export default function HomePage() {
                 {/* Clickable Email */}
                 <li>
                   <a
-                    href="mailto:admin@ciwaviv.com"
+                    href="mailto:info@ciwaviv.com"
                     className="flex items-center space-x-2 hover:text-[#265287] transition-colors"
                   >
                     <Mail className="w-4 h-4" />
-                    <span>admin@ciwaviv.com</span>
+                    <span>info@ciwaviv.com</span>
                   </a>
                 </li>
 
                 {/* Clickable Phone */}
                 <li>
                   <a
-                    href="tel:08036862816"
+                    href="tel:+2347049932998"
                     className="flex items-center space-x-2 hover:text-[#265287] transition-colors"
                   >
                     <Phone className="w-4 h-4" />
-                    <span>08036862816</span>
+                    <span>+2347049932998</span>
                   </a>
                 </li>
 
-                <li>Hours: Mon–Sat 8AM–6PM</li>
+                <li>Hours: Mon–Sat 8AM–5PM</li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-3 sm:mb-4 text-sm sm:text-base">Follow Us</h4>
               <div className="flex space-x-3 sm:space-x-4">
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
+                {/* Facebook */}
+                <a
+                  href={socialMediaLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer"
+                >
                   <Facebook className="text-white w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
+                </a>
 
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
+                {/* Twitter/X */}
+                <a
+                  href={socialMediaLinks.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer"
+                >
                   <Twitter className="text-white w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
+                </a>
 
-                <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer">
+                {/* Instagram */}
+                <a
+                  href={socialMediaLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer"
+                >
                   <Instagram className="text-white w-4 h-4 sm:w-5 sm:h-5" />
-                </div>
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href={socialMediaLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-[#265287] hover:text-gray-900 transition-colors cursor-pointer"
+                >
+                  <Linkedin className="text-white w-4 h-4 sm:w-5 sm:h-5" />
+                </a>
               </div>
             </div>
-          </div>
-          
+            </div>
           <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400 text-sm sm:text-base">
             <p>&copy; {new Date().getFullYear()} Ciwaviv Global Resource Ltd. All rights reserved.</p>
           </div>
