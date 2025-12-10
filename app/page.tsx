@@ -624,7 +624,7 @@ export default function HomePage() {
             </div>
             </div>
           <div className="border-t border-gray-800 mt-6 sm:mt-8 pt-6 sm:pt-8 text-center text-gray-400 text-sm sm:text-base">
-            <p>&copy; {new Date().getFullYear()} Ciwaviv Global Resource Ltd. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Ciwaviv Global Resource Ltd. All rights reserved | Designed by <Link href="http://vxdigitals.com/" target="_blank" className="text-primary">VxDigital Ltd</Link>.</p>
           </div>
         </div>
       </footer>
